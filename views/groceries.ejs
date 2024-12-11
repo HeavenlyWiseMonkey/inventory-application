@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= category %></title>
+</head>
+<body>
+    <% groceries.forEach(grocery => { %>
+        <div>
+            <button type="button" onClick="location.href='<%= category %>/<%= grocery.groceryname %>'"><%= grocery.groceryname %></button>
+        </div>
+    <% }) %>
+</body>
+</html>
