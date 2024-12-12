@@ -8,7 +8,10 @@
 <body>
     <h1>Companies</h1>
     <% companies.forEach(company => { %>
-        <%= company.companyname %>
+        <div>
+            <button type="text"><%= company.companyname %></button>
+        </div>
     <% }) %>
+    <button type="text" onClick="location.href='companies/add-company'">Add Company</button>
 </body>
 </html>

@@ -8,19 +8,19 @@ async function getAllCategories(req, res) {
 }
 
 async function getAllCategoryGroceries(req, res) {
-    const categoryGroceries = await db.getCategoryGroceries(req.params.category);
+    const categoryGroceries = await db.getCategoryGroceries(req.params.categoryname);
     res.render('groceries', {
-        category: req.params.category,
+        categoryname: req.params.categoryname,
         groceries: categoryGroceries,
-    })
+    });
 }
 
 async function getItem(req, res) {
-    const item = await db.getItem(req.params.item);
+    const item = (await db.getItem(req.params.item))[0];
     res.render('item', {
-        category: req.params.category,
-        item: req.params.item,
-    })
+        categoryname: req.params.categoryname,
+        item: item,
+    });
 }
 
 function getAddCategory(req, res) {
@@ -53,4 +53,4 @@ module.exports = {
     postAddCategory,
     getAddItem,
     postAddItem,
-}
+};

@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= category %></title>
+    <title><%= categoryname %></title>
 </head>
 <body>
     <% groceries.forEach(grocery => { %>
         <div>
-            <button type="button" onClick="location.href='<%= category %>/<%= grocery.groceryname %>'"><%= grocery.groceryname %></button>
+            <button type="button" onClick="location.href='<%= grocery.groceryname %>'"><%= grocery.groceryname %></button>
         </div>
     <% }) %>
-    <button type="button" onClick="location.href='<%= category %>/add-item'">Add item</button>
+    <button type="button" onClick="location.href='<%= categoryname %>/add-item'">Add Item</button>
 </body>
 </html>

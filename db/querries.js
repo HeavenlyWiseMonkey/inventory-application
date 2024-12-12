@@ -10,18 +10,22 @@ async function getAllCompanies() {
     return rows;
 }
 
-async function getCategoryGroceries(category) {
+async function getCategoryGroceries(categoryname) {
     const SQL = `
     SELECT * FROM groceries
     WHERE groceries.categoryid = 
-        (SELECT id FROM categories WHERE categoryname = '${category}');
+        (SELECT id FROM categories WHERE categoryname = '${categoryname}');
     `;
     const { rows } = await pool.query(SQL);
     return rows;
 }
 
-async function getItem(item) {
-    const { rows } = await pool.query(`SELECT * FROM groceries WHERE groceryname = '${item}'`);
+async function getCompanyGroceries(companyname) {
+
+}
+
+async function getItem(groceryname) {
+    const { rows } = await pool.query(`SELECT * FROM groceries WHERE groceryname = '${groceryname}'`);
     return rows;
 }
 
@@ -37,7 +41,10 @@ async function postAddCategory(categoryname) {
 async function postAddCompany(companyname) {
     const SQL = `
     INSERT INTO companies (companyname)
-    `
+    VALUES ($1)
+    `;
+
+    await pool.query(SQL, [companyname]);
 }
 
 async function postAddItem(groceryname, price, rating, categoryname, companyname) {
@@ -59,4 +66,5 @@ module.exports = {
     getItem,
     postAddCategory,
     postAddItem,
+    postAddCompany,
 }

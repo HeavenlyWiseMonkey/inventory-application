@@ -6,4 +6,4 @@ function getIndex(req, res) {
 
 module.exports = {
     getIndex,
-}
+};
