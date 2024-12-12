@@ -25,9 +25,32 @@ async function getItem(item) {
     return rows;
 }
 
+async function postAddCategory(category) {
+    const SQL = `
+    INSERT INTO categories (categoryname)
+    VALUES ($1)
+    `;
+
+    await pool.query(SQL, [category]);
+}
+
+async function postAddItem(groceryname, price, rating, categoryname, companyname) {
+    const categoryid = (await pool.query(`SELECT id FROM categories WHERE categoryname = '${categoryname}'`)).rows[0].id;
+    const companyid = (await pool.query(`SELECT id FROM companies WHERE companyname = '${companyname}'`)).rows[0].id;
+    
+    const SQL = `
+    INSERT INTO groceries (groceryname, price, rating, categoryid, companyid)
+    VALUES ($1, $2, $3, $4, $5)
+    `;
+
+    await pool.query(SQL, [groceryname, price, rating, categoryid, companyid]);
+}
+
 module.exports = {
     getAllCategories,
     getAllCompanies,
     getCategoryGroceries,
     getItem,
+    postAddCategory,
+    postAddItem,
 }

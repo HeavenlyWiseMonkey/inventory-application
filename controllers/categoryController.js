@@ -23,8 +23,34 @@ async function getItem(req, res) {
     })
 }
 
+function getAddCategory(req, res) {
+    res.render('addCategory');
+}
+
+async function postAddCategory(req, res) {
+    await db.postAddCategory(req.body.category);
+    res.redirect('/');
+}
+
+async function getAddItem(req, res) {
+    const companies = await db.getAllCompanies();
+    res.render('addItem', {
+        companies: companies,
+    });
+}
+
+async function postAddItem(req, res) {
+    const { groceryname, price, rating, company } = req.body;
+    await db.postAddItem(groceryname, price, rating, req.params.category, company);
+    res.redirect('/');
+}
+
 module.exports = {
     getAllCategories,
     getAllCategoryGroceries,
     getItem,
+    getAddCategory,
+    postAddCategory,
+    getAddItem,
+    postAddItem,
 }

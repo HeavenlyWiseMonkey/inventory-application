@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Item</title>
+</head>
+<body>
+    <form action="add-item" method="POST">
+        <label for="groceryname">Item: </label>
+        <input type="text" name="groceryname" id="groceryname" required>
+
+        <label for="price">Price: </label>
+        <input type="number" name="price" id="price" step=".01" required>
+
+        <label for="rating">Rating: </label>
+        <input type="number" name="rating" id="rating" min="0" max="5" step="0.5" required>
+
+        <label for="company">Company: </label>
+        <select name="company" id="company" required>
+            <% companies.forEach(company => { %>
+                <option value="<%= company.companyname %>"><%= company.companyname %></option>
+            <% }) %>
+        </select>
+
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>
