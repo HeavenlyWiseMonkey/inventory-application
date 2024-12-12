@@ -28,7 +28,7 @@ function getAddCategory(req, res) {
 }
 
 async function postAddCategory(req, res) {
-    await db.postAddCategory(req.body.category);
+    await db.postAddCategory(req.body.categoryname);
     res.redirect('/');
 }
 
@@ -40,8 +40,8 @@ async function getAddItem(req, res) {
 }
 
 async function postAddItem(req, res) {
-    const { groceryname, price, rating, company } = req.body;
-    await db.postAddItem(groceryname, price, rating, req.params.category, company);
+    const { groceryname, price, rating, companyname } = req.body;
+    await db.postAddItem(groceryname, price, rating, req.params.category, companyname);
     res.redirect('/');
 }
 
