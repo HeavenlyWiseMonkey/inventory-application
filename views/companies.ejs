@@ -9,9 +9,9 @@
     <h1>Companies</h1>
     <% companies.forEach(company => { %>
         <div>
-            <button type="text"><%= company.companyname %></button>
+            <button type="text" onClick="location.href += '/<%= company.companyname %>'"><%= company.companyname %></button>
         </div>
     <% }) %>
-    <button type="text" onClick="location.href='companies/add-company'">Add Company</button>
+    <button type="text" onClick="location.href += '/add-company'">Add Company</button>
 </body>
 </html>

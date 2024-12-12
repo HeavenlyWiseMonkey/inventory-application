@@ -10,7 +10,7 @@ async function getAllCategories(req, res) {
 async function getAllCategoryGroceries(req, res) {
     const categoryGroceries = await db.getCategoryGroceries(req.params.categoryname);
     res.render('groceries', {
-        categoryname: req.params.categoryname,
+        group: req.params.categoryname,
         groceries: categoryGroceries,
     });
 }
@@ -35,13 +35,15 @@ async function postAddCategory(req, res) {
 async function getAddItem(req, res) {
     const companies = await db.getAllCompanies();
     res.render('addItem', {
-        companies: companies,
+        groups: companies,
+        name: 'companyname',
+        label: 'Company: ',
     });
 }
 
 async function postAddItem(req, res) {
     const { groceryname, price, rating, companyname } = req.body;
-    await db.postAddItem(groceryname, price, rating, req.params.category, companyname);
+    await db.postAddItem(groceryname, price, rating, req.params.categoryname, companyname);
     res.redirect('/');
 }
 

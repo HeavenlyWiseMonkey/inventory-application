@@ -7,8 +7,21 @@ async function getAllCompanies(req, res) {
     });
 }
 
-async function getAllCompanyItems(req, res) {
-    
+async function getAllCompanyGroceries(req, res) {
+    const companyGroceries = await db.getCompanyGroceries(req.params.companyname);
+    res.render('groceries', {
+        group: req.params.companyname,
+        groceries: companyGroceries,
+    });
+}
+
+async function getItem(req, res) {
+    const item = (await db.getItem(req.params.item))[0];
+    console.log(item);
+    res.render('item', {
+        companyname: req.params.companyname,
+        item: item,
+    });
 }
 
 async function getAddCompany(req, res) {
@@ -20,8 +33,27 @@ async function postAddCompany(req, res) {
     res.redirect('/');
 }
 
+async function getAddItem(req, res) {
+    const categories = await db.getAllCategories();
+    res.render('addItem', {
+        groups: categories,
+        name: 'categoryname',
+        label: 'Category: ',
+    });
+}
+
+async function postAddItem(req, res) {
+    const { groceryname, price, rating, categoryname } = req.body;
+    await db.postAddItem(groceryname, price, rating, categoryname, req.params.companyname);
+    res.redirect('/');
+}
+
 module.exports = {
     getAllCompanies,
+    getAllCompanyGroceries,
+    getItem,
     getAddCompany,
     postAddCompany,
+    getAddItem,
+    postAddItem,
 };

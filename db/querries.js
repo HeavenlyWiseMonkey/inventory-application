@@ -21,7 +21,13 @@ async function getCategoryGroceries(categoryname) {
 }
 
 async function getCompanyGroceries(companyname) {
-
+    const SQL = `
+    SELECT * FROM groceries
+    WHERE groceries.companyid =
+        (SELECT id FROM companies WHERE companyname = '${companyname}');
+    `;
+    const { rows } = await pool.query(SQL);
+    return rows;
 }
 
 async function getItem(groceryname) {
@@ -63,6 +69,7 @@ module.exports = {
     getAllCategories,
     getAllCompanies,
     getCategoryGroceries,
+    getCompanyGroceries,
     getItem,
     postAddCategory,
     postAddItem,

@@ -15,11 +15,11 @@
 
         <label for="rating">Rating: </label>
         <input type="number" name="rating" id="rating" min="0" max="5" step="0.5" required>
-
-        <label for="companyname">Company: </label>
-        <select name="companyname" id="companyname" required>
-            <% companies.forEach(company => { %>
-                <option value="<%= company.companyname %>"><%= company.companyname %></option>
+        
+        <label for="<%= name %>"><%= label %></label>
+        <select name="<%= name %>" id="<%= name %>" required>
+            <% groups.forEach(group => { %>
+                <option value="<%= group[name] %>"><%= group[name] %></option>
             <% }) %>
         </select>
 
