@@ -23,25 +23,25 @@ CREATE TABLE IF NOT EXISTS companies (
 
 INSERT INTO categories (categoryname)
 VALUES
-    ('fresh-fruits'),
-    ('fresh-fegetables'),
-    ('dairy-and-eggs'),
-    ('meat');
+    ('Fresh fruits'),
+    ('Fresh vegetables'),
+    ('Dairy and eggs'),
+    ('Meat');
 
 INSERT INTO companies (companyname)
 VALUES
-    ('fresh-foods-company'),
-    ('farmers''-guild');
+    ('Fresh Foods Company'),
+    ('Farmers'' Guild');
 
 INSERT INTO groceries (groceryname, price, rating, categoryid, companyid)
 VALUES
-    ('apple', 0.39, 4, 1, 1),
-    ('banana', 0.35, 4.5, 1, 1),
-    ('potatoes', 3.97, 4.4, 2, 1),
-    ('broccoli', 3.97, 4.4, 2, 1),
-    ('milk', 5.55, 4.3, 3, 2),
-    ('ground beef', 8.48, 4, 4, 2),
-    ('salmon', 11.07, 4, 4, 2);
+    ('Apple', 0.39, 4, 1, 1),
+    ('Banana', 0.35, 4.5, 1, 1),
+    ('Potatoes', 3.97, 4.5, 2, 1),
+    ('Broccoli', 3.97, 4.5, 2, 1),
+    ('Milk', 5.55, 4.5, 3, 2),
+    ('Ground beef', 8.48, 4, 4, 2),
+    ('Salmon', 11.07, 4, 4, 2);
 `;
 
 const resetTables = `

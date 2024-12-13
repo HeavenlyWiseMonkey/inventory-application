@@ -30,7 +30,7 @@ async function getAddCompany(req, res) {
 
 async function postAddCompany(req, res) {
     await db.postAddCompany(req.body.companyname);
-    res.redirect('/');
+    res.redirect('/companies');
 }
 
 async function getAddItem(req, res) {
@@ -45,7 +45,7 @@ async function getAddItem(req, res) {
 async function postAddItem(req, res) {
     const { groceryname, price, rating, categoryname } = req.body;
     await db.postAddItem(groceryname, price, rating, categoryname, req.params.companyname);
-    res.redirect('/');
+    res.redirect(`/companies/${req.params.companyname}`);
 }
 
 module.exports = {

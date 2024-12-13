@@ -65,6 +65,14 @@ async function postAddItem(groceryname, price, rating, categoryname, companyname
     await pool.query(SQL, [groceryname, price, rating, categoryid, companyid]);
 }
 
+async function deleteItem(groceryname) {
+    const SQL = `
+    DELETE FROM groceries WHERE groceryname = '${groceryname}';
+    `;
+
+    await pool.query(SQL);
+}
+
 module.exports = {
     getAllCategories,
     getAllCompanies,
@@ -74,4 +82,5 @@ module.exports = {
     postAddCategory,
     postAddItem,
     postAddCompany,
+    deleteItem,
 }

@@ -29,7 +29,7 @@ function getAddCategory(req, res) {
 
 async function postAddCategory(req, res) {
     await db.postAddCategory(req.body.categoryname);
-    res.redirect('/');
+    res.redirect('/categories');
 }
 
 async function getAddItem(req, res) {
@@ -44,7 +44,19 @@ async function getAddItem(req, res) {
 async function postAddItem(req, res) {
     const { groceryname, price, rating, companyname } = req.body;
     await db.postAddItem(groceryname, price, rating, req.params.categoryname, companyname);
-    res.redirect('/');
+    res.redirect(`/categories/${req.params.categoryname}`);
+}
+
+async function getDeleteItem(req, res) {
+    res.render('deleteItem', {
+        groceryname: req.params.item,
+    });
+}
+
+async function deleteItem(req, res) {
+    console.log(req.body);
+    await db.deleteItem(req.body.item);
+    res.redirect(`/categories/${req.params.categoryname}`);
 }
 
 module.exports = {
@@ -55,4 +67,6 @@ module.exports = {
     postAddCategory,
     getAddItem,
     postAddItem,
+    getDeleteItem,
+    deleteItem,
 };
