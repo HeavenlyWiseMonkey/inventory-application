@@ -33,6 +33,7 @@ async function getCompanyGroceries(companyname) {
 }
 
 async function getItem(groceryname) {
+    groceryname = groceryname.replace("'", "''");
     const { rows } = await pool.query(`SELECT * FROM groceries WHERE groceryname = '${groceryname}'`);
     return rows;
 }
