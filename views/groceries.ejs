@@ -8,9 +8,11 @@
 <body>
     <% groceries.forEach(grocery => { %>
         <div>
-            <button type="button" onClick="location.href += '/<%= grocery.groceryname %>'"><%= grocery.groceryname %></button>
+            <a href="/categories/<%= group %>/<%= grocery.groceryname %>"><%= grocery.groceryname %></a>
         </div>
     <% }) %>
-    <button type="button" onClick="location.href += '/add-item'">Add Item</button>
+    <a href="/categories/<%= group %>/add-item">Add Item</a>
+    <a href="/categories/<%= group %>/delete-category">Delete Category</a>
+    <a href="../">Go Back</a>
 </body>
 </html>

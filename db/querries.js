@@ -21,6 +21,7 @@ async function getCategoryGroceries(categoryname) {
 }
 
 async function getCompanyGroceries(companyname) {
+    companyname = companyname.replace("'", "''");
     const SQL = `
     SELECT * FROM groceries
     WHERE groceries.companyid =
@@ -72,6 +73,16 @@ async function deleteItem(groceryname) {
 
     await pool.query(SQL);
 }
+async function deleteCategory(categoryname) {
+    const SQL = `
+    DELETE FROM groceries WHERE categoryid =
+        (SELECT id FROM categories WHERE categoryname = '${categoryname}');
+
+    DELETE FROM categories WHERE categoryname = '${categoryname}';
+    `;
+
+    await pool.query(SQL);
+}
 
 module.exports = {
     getAllCategories,
@@ -83,4 +94,5 @@ module.exports = {
     postAddItem,
     postAddCompany,
     deleteItem,
+    deleteCategory,
 }

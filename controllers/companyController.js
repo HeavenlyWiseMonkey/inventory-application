@@ -48,6 +48,17 @@ async function postAddItem(req, res) {
     res.redirect(`/companies/${req.params.companyname}`);
 }
 
+async function getDeleteItem(req, res) {
+    res.render('deleteItem', {
+        groceryname: req.params.item,
+    });
+}
+
+async function deleteItem(req, res) {
+    await db.deleteItem(req.body.item);
+    res.redirect(`/categories/${req.params.categoryname}`);
+}
+
 module.exports = {
     getAllCompanies,
     getAllCompanyGroceries,
@@ -56,4 +67,6 @@ module.exports = {
     postAddCompany,
     getAddItem,
     postAddItem,
+    getDeleteItem,
+    deleteItem,
 };

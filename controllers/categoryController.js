@@ -54,9 +54,19 @@ async function getDeleteItem(req, res) {
 }
 
 async function deleteItem(req, res) {
-    console.log(req.body);
     await db.deleteItem(req.body.item);
     res.redirect(`/categories/${req.params.categoryname}`);
+}
+
+async function getDeleteCategory(req, res) {
+    res.render('deleteCategory', {
+        categoryname: req.params.categoryname,
+    });
+}
+
+async function deleteCategory(req, res) {
+    await db.deleteCategory(req.body.categoryname);
+    res.redirect('/categories');
 }
 
 module.exports = {
@@ -69,4 +79,6 @@ module.exports = {
     postAddItem,
     getDeleteItem,
     deleteItem,
+    getDeleteCategory,
+    deleteCategory,
 };

@@ -9,9 +9,10 @@
     <h1>Categories</h1>
     <% categories.forEach(category => { %>
         <div>
-            <button type="button" onClick="location.href += '/<%= category.categoryname %>'"><%= category.categoryname %></button>
+            <a href="/categories/<%= category.categoryname %>"><%= category.categoryname %></a>
         </div>
     <% }) %>
-    <button type="button" onClick="location.href += '/add-category'">Add Category</button>
+    <a href="/categories/add-category">Add Category</a>
+    <a href="../">Go Back</a>
 </body>
 </html>

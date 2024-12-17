@@ -7,6 +7,7 @@
 </head>
 <body>
     <p><%= item.groceryname %></p>
-    <button type="button" onClick="location.href += '/delete-item'">Delete Item</button>
+    <a href="<%= item.groceryname %>/delete-item">Delete Item</a>
+    <a href="../">Go Back</a>
 </body>
 </html>

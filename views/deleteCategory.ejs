@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Delete Item</title>
+    <title>Delete Category</title>
 </head>
 <body>
-    <form action="delete-item" method="POST">
-        <label for="item">Delete Item: </label>
-        <input type="text" name="item" id="item" value="<%= groceryname %>" readonly>
+    <form action="delete-category" method="POST">
+        <label for="categoryname">Category: </label>
+        <input type="text" name="categoryname" id="categoryname" value="<%= categoryname %>" readonly>
         <button type="submit">Submit</button>
         <a href="../">Go Back</a>
     </form>
