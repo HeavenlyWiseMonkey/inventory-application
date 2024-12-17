@@ -52,12 +52,11 @@ DROP TABLE categories;
 DROP TABLE companies;
 `;
 
-// fix groceries name
 const getAllGroceries = `
-SELECT groceries.id, groceryName, price, rating, categoryname, companyname
+SELECT groceries.id, groceryname, price, rating, categoryname, companyname
 FROM ((groceries
-INNER JOIN categories ON groceries.categoryId = categories.id)
-INNER JOIN companies ON groceries.companyId = companies.id);
+    INNER JOIN categories ON groceries.categoryId = categories.id)
+    INNER JOIN companies ON groceries.companyId = companies.id);
 `;
 
 async function main() {
