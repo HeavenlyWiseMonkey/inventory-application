@@ -11,6 +11,7 @@ async function getAllCompanies() {
 }
 
 async function getCategoryGroceries(categoryname) {
+    categoryname = categoryname.replace("'", "''");
     const SQL = `
     SELECT * FROM groceries
     WHERE groceries.categoryid = 
