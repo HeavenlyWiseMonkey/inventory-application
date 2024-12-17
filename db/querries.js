@@ -69,18 +69,33 @@ async function postAddItem(groceryname, price, rating, categoryname, companyname
 }
 
 async function deleteItem(groceryname) {
+    groceryname = groceryname.replace("'", "''");
     const SQL = `
     DELETE FROM groceries WHERE groceryname = '${groceryname}';
     `;
 
     await pool.query(SQL);
 }
+
 async function deleteCategory(categoryname) {
+    categoryname = categoryname.replace("'", "''");
     const SQL = `
     DELETE FROM groceries WHERE categoryid =
         (SELECT id FROM categories WHERE categoryname = '${categoryname}');
 
     DELETE FROM categories WHERE categoryname = '${categoryname}';
+    `;
+
+    await pool.query(SQL);
+}
+
+async function deleteCompany(companyname) {
+    companyname = companyname.replace("'", "''");
+    const SQL = `
+    DELETE FROM groceries WHERE companyid =
+        (SELECT id FROM companies WHERE companyname = '${companyname}');
+    
+    DELETE FROM companies WHERE companyname = '${companyname}';
     `;
 
     await pool.query(SQL);
@@ -97,4 +112,5 @@ module.exports = {
     postAddCompany,
     deleteItem,
     deleteCategory,
+    deleteCompany,
 }

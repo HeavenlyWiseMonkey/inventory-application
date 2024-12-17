@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete Company</title>
+</head>
+<body>
+    <form action="delete-company" method="POST">
+        <label for="companyname">Company: </label>
+        <input type="text" name="companyname" id="companyname" value="<%= companyname %>" readonly>
+        <button type="submit">Submit</button>
+        <a href="../">Go Back</a>
+    </form>
+</body>
+</html>

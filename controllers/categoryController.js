@@ -12,6 +12,9 @@ async function getAllCategoryGroceries(req, res) {
     res.render('groceries', {
         group: req.params.categoryname,
         groceries: categoryGroceries,
+        name: 'categories',
+        thing: 'category',
+        text: 'Category',
     });
 }
 

@@ -12,12 +12,14 @@ async function getAllCompanyGroceries(req, res) {
     res.render('groceries', {
         group: req.params.companyname,
         groceries: companyGroceries,
+        name: 'companies',
+        thing: 'company',
+        text: 'Company',
     });
 }
 
 async function getItem(req, res) {
     const item = (await db.getItem(req.params.item))[0];
-    console.log(item);
     res.render('item', {
         companyname: req.params.companyname,
         item: item,
@@ -56,7 +58,18 @@ async function getDeleteItem(req, res) {
 
 async function deleteItem(req, res) {
     await db.deleteItem(req.body.item);
-    res.redirect(`/categories/${req.params.categoryname}`);
+    res.redirect(`/companies/${req.params.companyname}`);
+}
+
+async function getDeleteCompany(req, res) {
+    res.render('deleteCompany', {
+        companyname: req.params.companyname,
+    });
+}
+
+async function deleteCompany(req, res) {
+    await db.deleteCompany(req.body.companyname);
+    res.redirect('/companies');
 }
 
 module.exports = {
@@ -69,4 +82,6 @@ module.exports = {
     postAddItem,
     getDeleteItem,
     deleteItem,
+    getDeleteCompany,
+    deleteCompany,
 };

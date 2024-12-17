@@ -8,11 +8,11 @@
 <body>
     <% groceries.forEach(grocery => { %>
         <div>
-            <a href="/categories/<%= group %>/<%= grocery.groceryname %>"><%= grocery.groceryname %></a>
+            <a href="/<%= name %>/<%= group %>/<%= grocery.groceryname %>"><%= grocery.groceryname %></a>
         </div>
     <% }) %>
-    <a href="/categories/<%= group %>/add-item">Add Item</a>
-    <a href="/categories/<%= group %>/delete-category">Delete Category</a>
-    <a href="../">Go Back</a>
+    <a href="/<%= name %>/<%= group %>/add-item">Add Item</a>
+    <a href="/<%= name %>/<%= group %>/delete-<%= thing %>">Delete <%= text %></a>
+    <a href="/<%= name %>">Go Back</a>
 </body>
 </html>
