@@ -41,6 +41,7 @@ async function getAddItem(req, res) {
         groups: companies,
         name: 'companyname',
         label: 'Company: ',
+        link: `categories/${req.params.categoryname}`,
     });
 }
 
@@ -64,6 +65,7 @@ async function deleteItem(req, res) {
 async function getDeleteCategory(req, res) {
     res.render('deleteCategory', {
         categoryname: req.params.categoryname,
+        link: `categories/${req.params.categoryname}`,
     });
 }
 
