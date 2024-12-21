@@ -1,0 +1,45 @@
+* {
+    /* margin: 0; */
+    font-family: sans-serif;
+}
+
+.categories {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 50px;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 350px;
+    border: 1px solid black;
+    padding: 10px;
+}
+
+.card > img, .item > img {
+    object-fit: contain;
+}
+
+.card > img {
+    width: 300px;
+    height: auto;
+}
+
+.box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.item {
+    display: flex;
+}
+
+.item > img {
+    width: 30vw;
+    height: auto;
+}

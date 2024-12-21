@@ -22,6 +22,7 @@ async function getItem(req, res) {
     const item = (await db.getItem(req.params.item))[0];
     res.render('item', {
         categoryname: req.params.categoryname,
+        link: req.params.categoryname,
         item: item,
     });
 }

@@ -26,7 +26,9 @@ VALUES
     ('Fresh fruits'),
     ('Fresh vegetables'),
     ('Dairy and eggs'),
-    ('Meat');
+    ('Meat'),
+    ('Juice'),
+    ('Berries');
 
 INSERT INTO companies (companyname)
 VALUES
@@ -41,7 +43,9 @@ VALUES
     ('Broccoli', 3.97, 4.5, 2, 1),
     ('Milk', 5.55, 4.5, 3, 2),
     ('Ground beef', 8.48, 4, 4, 2),
-    ('Salmon', 11.07, 4, 4, 2);
+    ('Salmon', 11.07, 4, 4, 2),
+    ('Orange juice', 1.48, 4.5, 5, 1),
+    ('Blueberries', 4.97, 4, 6, 2);
 `;
 
 const resetTables = `
