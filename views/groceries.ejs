@@ -7,10 +7,10 @@
     <link rel="stylesheet" href="/style.css">
 </head>
 <body>
-    <div class="categories">
+    <div class="groups">
         <% groceries.forEach(grocery => { %>
             <div class="card">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/Pink_lady_and_cross_section.jpg/220px-Pink_lady_and_cross_section.jpg">
+                <img src="/images/<%= grocery.grocerypath %>">
                 <p>Price: $<%= grocery.price %></p>
                 <a href="/<%= name %>/<%= group %>/<%= grocery.groceryname %>"><%= grocery.groceryname %></a>
                 <p>Rating: <%= grocery.rating %></p>

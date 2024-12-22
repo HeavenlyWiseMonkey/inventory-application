@@ -35,7 +35,7 @@ async function getCompanyGroceries(companyname) {
 async function getItem(groceryname) {
     groceryname = groceryname.replace("'", "''");
     const SQL = `
-    SELECT groceryname, price, rating, categoryname, companyname
+    SELECT groceryname, price, rating, categoryname, companyname, grocerypath
     FROM ((groceries
         INNER JOIN categories ON groceries.categoryid = categories.id)
         INNER JOIN companies ON groceries.companyid = companies.id)

@@ -8,10 +8,10 @@
 </head>
 <body>
     <h1>Categories</h1>
-    <div class="categories">
+    <div class="groups">
         <% categories.forEach(category => { %>
             <div class="card">
-                <img src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQtrY17ssVN2wXeGjuBL8nEH9T8NdhRIff5hNZB_8f7xwt5xksskKUsW1RUrQnDu07AsVrtn5pj9zb5afE3PDVUag">
+                <img src="images/<%= category.categorypath %>">
                 <a href="/categories/<%= category.categoryname %>"><%= category.categoryname %></a>
             </div>
         <% }) %>

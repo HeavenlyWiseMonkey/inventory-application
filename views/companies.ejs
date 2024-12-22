@@ -4,14 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Companies</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <h1>Companies</h1>
-    <% companies.forEach(company => { %>
-        <div>
-            <a href="companies/<%= company.companyname %>"><%= company.companyname %></a>
-        </div>
-    <% }) %>
+    <div class="groups">
+        <% companies.forEach(company => { %>
+            <div class="card">
+                <img src="images/<%= company.companypath %>">
+                <a href="companies/<%= company.companyname %>"><%= company.companyname %></a>
+            </div>
+        <% }) %>
+    </div>
     <a href="companies/add-company">Add Company</a>
     <a href="../">Go Back</a>
 </body>
