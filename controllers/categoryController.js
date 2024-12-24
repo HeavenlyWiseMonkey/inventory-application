@@ -37,18 +37,19 @@ async function postAddCategory(req, res) {
 }
 
 async function getAddItem(req, res) {
+    const categories = await db.getAllCategories();
     const companies = await db.getAllCompanies();
     res.render('addItem', {
-        groups: companies,
-        name: 'companyname',
-        label: 'Company: ',
+        categories: categories,
+        companies: companies,
+        selectValue: req.params.categoryname,
         link: `categories/${req.params.categoryname}`,
     });
 }
 
 async function postAddItem(req, res) {
-    const { groceryname, price, rating, companyname } = req.body;
-    await db.postAddItem(groceryname, price, rating, req.params.categoryname, companyname);
+    const { groceryname, price, rating, categoryname, companyname } = req.body;
+    await db.postAddItem(groceryname, price, rating, categoryname, companyname);
     res.redirect(`/categories/${req.params.categoryname}`);
 }
 

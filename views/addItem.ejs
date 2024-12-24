@@ -15,14 +15,23 @@
 
         <label for="rating">Rating: </label>
         <input type="number" name="rating" id="rating" min="0" max="5" step="0.5" required>
-        
-        <label for="<%= name %>"><%= label %></label>
-        <select name="<%= name %>" id="<%= name %>" required>
-            <% groups.forEach(group => { %>
-                <option value="<%= group[name] %>"><%= group[name] %></option>
+
+        <label for="categoryname">Category: </label>
+        <select name="categoryname" id="categoryname" required>
+            <% categories.forEach(category => { %>
+                <% let selected = category.categoryname === selectValue ? "selected" : "" %>
+                <option value="<%= category.categoryname %>" <%= selected %>><%= category.categoryname %></option>
             <% }) %>
         </select>
-        <% console.log(groups, name); %>
+
+        <label for="companyname">Company: </label>
+        <select name="companyname" id="companyname" required>
+            <% companies.forEach(company => { %>
+                <% let selected = company.companyname === selectValue ? "selected" : "" %>
+                <option value="<%= company.companyname %>" <%= selected %>><%= company.companyname %></option>
+            <% }) %>
+        </select>
+
         <button type="submit">Submit</button>
         <a href="/<%= link %>">Go Back</a>
     </form>
