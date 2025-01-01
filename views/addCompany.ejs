@@ -4,11 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add Company</title>
+    <link rel="stylesheet" href="/styles/formStyle.css">
+    <script src="/showImage.js" defer></script>
 </head>
 <body>
-    <form action="add-company" method="POST">
+    <form action="add-company" method="POST" enctype="multipart/form-data">
         <label for="companyname">Company: </label>
         <input type="text" name="companyname" id="companyname" required>
+
+        <label for="image">Image (PNG, JPEG): </label>
+        <input type="file" name="image" id="image">
+
+        <img id="dummy" src="">
+
         <button type="submit">Submit</button>
         <a href="/companies">Go Back</a>
     </form>

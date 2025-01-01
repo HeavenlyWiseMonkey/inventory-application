@@ -32,7 +32,7 @@ async function getAddCompany(req, res) {
 }
 
 async function postAddCompany(req, res) {
-    await db.postAddCompany(req.body.companyname);
+    await db.postAddCompany(req.body.companyname, req.file.filename);
     res.redirect('/companies');
 }
 
@@ -49,7 +49,7 @@ async function getAddItem(req, res) {
 
 async function postAddItem(req, res) {
     const { groceryname, price, rating, categoryname, companyname } = req.body;
-    await db.postAddItem(groceryname, price, rating, categoryname, companyname);
+    await db.postAddItem(groceryname, price, rating, categoryname, companyname, req.file.filename);
     res.redirect(`/companies/${req.params.companyname}`);
 }
 

@@ -4,9 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add Item</title>
+    <link rel="stylesheet" href="/styles/formStyle.css">
+    <script src="/showImage.js" defer></script>
 </head>
 <body>
-    <form action="add-item" method="POST">
+    <form action="add-item" method="POST" enctype="multipart/form-data">
         <label for="groceryname">Item: </label>
         <input type="text" name="groceryname" id="groceryname" required>
 
@@ -31,6 +33,11 @@
                 <option value="<%= company.companyname %>" <%= selected %>><%= company.companyname %></option>
             <% }) %>
         </select>
+
+        <label for="image">Image (PNG, JPG): </label>
+        <input type="file" name="image" id="image" accept=".png, .jpg, .jpeg">
+
+        <img id="dummy" src="">
 
         <button type="submit">Submit</button>
         <a href="/<%= link %>">Go Back</a>
