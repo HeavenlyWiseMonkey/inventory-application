@@ -10,7 +10,7 @@
     <div class="group">
         <% groceries.forEach(grocery => { %>
             <div class="card">
-                <img src="/images/<%= grocery.grocerypath %>">
+                <img src="/images/<%= grocery.groceryimage %>">
                 <p>Price: $<%= grocery.price %></p>
                 <a href="/<%= name %>/<%= group %>/<%= grocery.groceryname %>"><%= grocery.groceryname %></a>
                 <p>Rating: <%= grocery.rating %></p>

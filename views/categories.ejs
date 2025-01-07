@@ -11,7 +11,7 @@
     <div class="group">
         <% categories.forEach(category => { %>
             <div class="card">
-                <img src="images/<%= category.categorypath %>">
+                <img src="images/<%= category.categoryimage %>">
                 <a href="/categories/<%= category.categoryname %>"><%= category.categoryname %></a>
             </div>
         <% }) %>

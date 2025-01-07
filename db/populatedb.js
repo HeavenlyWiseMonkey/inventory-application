@@ -9,22 +9,22 @@ CREATE TABLE IF NOT EXISTS groceries (
     rating FLOAT,
     categoryid INTEGER,
     companyid INTEGER,
-    grocerypath VARCHAR ( 255 )
+    groceryimage VARCHAR ( 255 )
 );
 
 CREATE TABLE IF NOT EXISTS categories (
     id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
     categoryname VARCHAR ( 255 ),
-    categorypath VARCHAR ( 255 )
+    categoryimage VARCHAR ( 255 )
 );
 
 CREATE TABLE IF NOT EXISTS companies (
     id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
     companyname VARCHAR ( 255 ),
-    companypath VARCHAR ( 255 )
+    companyimage VARCHAR ( 255 )
 );
 
-INSERT INTO categories (categoryname, categorypath)
+INSERT INTO categories (categoryname, categoryimage)
 VALUES
     ('Fresh fruits', 'banana.jpg'),
     ('Fresh vegetables', 'potato.jpeg'),
@@ -33,12 +33,12 @@ VALUES
     ('Juice', 'orange-juice.png'),
     ('Berries', 'blueberries.png');
 
-INSERT INTO companies (companyname, companypath)
+INSERT INTO companies (companyname, companyimage)
 VALUES
     ('Fresh Foods Company', 'fresh-foods-company.jpeg'),
     ('Farmers'' Guild', 'farmers-guild.jpg');
 
-INSERT INTO groceries (groceryname, price, rating, categoryid, companyid, grocerypath)
+INSERT INTO groceries (groceryname, price, rating, categoryid, companyid, groceryimage)
 VALUES
     ('Apple', 0.39, 4, 1, 1, 'apple.jpg'),
     ('Banana', 0.35, 4.5, 1, 1, 'banana.jpg'),
@@ -60,7 +60,7 @@ DROP TABLE companies;
 `;
 
 const getAllGroceries = `
-SELECT groceries.id, groceryname, price, rating, categoryname, companyname, grocerypath
+SELECT groceries.id, groceryname, price, rating, categoryname, companyname, groceryimage
 FROM ((groceries
     INNER JOIN categories ON groceries.categoryId = categories.id)
     INNER JOIN companies ON groceries.companyId = companies.id);

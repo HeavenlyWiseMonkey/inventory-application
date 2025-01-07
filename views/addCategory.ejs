@@ -8,14 +8,20 @@
     <script src="/showImage.js" defer></script>
 </head>
 <body>
-    <form action="add-category" method="POST" enctype="multipart/form-data">
-        <label for="category">Add category: </label>
-        <input type="text" name="categoryname" id="categoryname" required>
+    <form class="form" action="add-category" method="POST" enctype="multipart/form-data">
+        <h1>New Category</h1>
+        
+        <div>
+            <label for="category">Category name: </label>
+            <input type="text" name="categoryname" id="categoryname" required>
+        </div>
 
-        <label for="image">Image (PNG, JPEG): </label>
-        <input type="file" name="image" id="image" required>
+        <div>
+            <label for="image">Image (PNG, JPEG): </label>
+            <input type="file" name="image" id="image" required>
 
-        <img id="dummy" src="">
+            <img id="dummy" src="">
+        </div>
 
         <button type="submit">Submit</button>
         <a href="/categories">Go Back</a>
