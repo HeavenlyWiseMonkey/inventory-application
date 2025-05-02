@@ -7,8 +7,14 @@ const storage = multer.diskStorage({
     },
 
     filename: function(req, file, cb) {
-        const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
+        const accepted = ['image/png', 'image/jpg', 'image/jpeg'];
         const fileparts = file.originalname.split('.');
+
+        if (!accepted.includes(file.mimetype)) {
+            return cb(new Error('Only images (PNG, JPG) are allowed'));
+        }
+
+        const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
         cb(null, fileparts[0] + '-' + uniqueSuffix + '.' + fileparts[1]);
     },
 });

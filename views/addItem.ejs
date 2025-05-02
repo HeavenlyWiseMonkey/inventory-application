@@ -5,25 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add Item</title>
     <link rel="stylesheet" href="/styles/formStyle.css">
-    <script src="/showImage.js" defer></script>
+    <script src="/script.js" defer></script>
+    <script src="/testingScript.js" defer></script>
 </head>
 <body>
+    <%- include('partials/errors.ejs') %>
     <form class="form" action="add-item" method="POST" enctype="multipart/form-data">
         <h1>New Item</h1>
         
         <div>
             <label for="groceryname">Name: </label>
-            <input type="text" name="groceryname" id="groceryname" required>
+            <input type="text" name="groceryname" id="groceryname" minlength="1" maxlength="30" pattern="[a-zA-Z]*" required>
         </div>
 
         <div>
             <label for="price">Price: </label>
-            <input type="number" name="price" id="price" step=".01" required>
+            <input type="number" name="price" id="price" min="0" max="100000" required>
         </div>
 
         <div>
             <label for="rating">Rating: </label>
-            <input type="number" name="rating" id="rating" min="0" max="5" step="0.5" required>
+            <input type="number" name="rating" id="rating" min="0" max="5" required>
         </div>
 
         <div>
@@ -48,8 +50,7 @@
 
         <div>
             <label for="image">Image (PNG, JPG): </label>
-            <input type="file" name="image" id="image" accept=".png, .jpg, .jpeg">
-
+            <input type="file" id="image" name="image" required>
             <img id="dummy" src="">
         </div>
 

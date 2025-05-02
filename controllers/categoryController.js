@@ -1,4 +1,7 @@
 const db = require('../db/querries');
+const { validationResult } = require('express-validator');
+const { validateAddCategory, validateAddItem } = require('../validation');
+const fs = require('fs');
 
 async function getAllCategories(req, res) {
     const categories = await db.getAllCategories();
@@ -31,10 +34,41 @@ function getAddCategory(req, res) {
     res.render('addCategory');
 }
 
-async function postAddCategory(req, res) {
-    await db.postAddCategory(req.body.categoryname, req.file.filename);
-    res.redirect('/categories');
-}
+const postAddCategory = [
+    validateAddCategory,
+    async (req, res) => {
+        const inputErrors = validationResult(req);
+        const hasFile = (req.file) ? true : false;
+        const errors = inputErrors.array();
+        const fileErr = 'Image must not be empty';
+
+        if (!hasFile) {
+            errors.push({
+                type: 'field',
+                value: '',
+                msg: fileErr,
+                path: 'image',
+                location: 'body',
+            });
+        }
+
+        // shows errors
+        if (errors.length) {
+            if (hasFile) {
+                fs.unlink(req.file.path, err => {
+                    if (err) throw err;
+                });
+            }
+
+            return res.status(400).render('addCategory', {
+                errors: errors,
+            });
+        }
+
+        // await db.postAddCategory(req.body.categoryname, req.file.filename);
+        res.redirect('/categories');
+    }
+];
 
 async function getAddItem(req, res) {
     const categories = await db.getAllCategories();
@@ -47,11 +81,48 @@ async function getAddItem(req, res) {
     });
 }
 
-async function postAddItem(req, res) {
-    const { groceryname, price, rating, categoryname, companyname } = req.body;
-    await db.postAddItem(groceryname, price, rating, categoryname, companyname, req.file.filename);
-    res.redirect(`/categories/${req.params.categoryname}`);
-}
+const postAddItem = [
+    validateAddItem,
+    async (req, res) => {
+        const inputErrors = validationResult(req);
+        const hasFile = (req.file) ? true : false;
+        const errors = inputErrors.array();
+        const fileErr = 'Image must not be empty';
+
+        if (!hasFile) {
+            errors.push({
+                type: 'field',
+                value: '',
+                msg: fileErr,
+                path: 'image',
+                location: 'body',
+            });
+        }
+
+        // shows errors
+        if (errors.length) {
+            if (hasFile) {
+                fs.unlink(req.file.path, err => {
+                    if (err) throw err;
+                });
+            }
+            const categories = await db.getAllCategories();
+            const companies = await db.getAllCompanies();
+            
+            return res.status(400).render('addItem', {
+                categories: categories,
+                companies: companies,
+                selectValue: req.params.categoryname,
+                link: `categories/${req.params.categoryname}`,
+                errors: errors,
+            });
+        }
+
+        // const { groceryname, price, rating, categoryname, companyname } = req.body;
+        // await db.postAddItem(groceryname, price, rating, categoryname, companyname, req.file.filename);
+        res.redirect(`/categories/${req.params.categoryname}`);
+    }
+];
 
 async function getDeleteItem(req, res) {
     res.render('deleteItem', {

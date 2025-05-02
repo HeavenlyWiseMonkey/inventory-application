@@ -5,20 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add Company</title>
     <link rel="stylesheet" href="/styles/formStyle.css">
-    <script src="/showImage.js" defer></script>
+    <script src="/script.js" defer></script>
 </head>
 <body>
+    <%- include('partials/errors.ejs') %> 
     <form class="form" action="add-company" method="POST" enctype="multipart/form-data">
         <h1>New Company</h1>
         
         <div>
             <label for="companyname">Company name: </label>
-            <input type="text" name="companyname" id="companyname" required>
+            <input type="text" name="companyname" id="companyname" minlength="1" maxlength="30">
         </div>
 
         <div>
             <label for="image">Image (PNG, JPEG): </label>
-            <input type="file" name="image" id="image">
+            <input type="file" name="image" id="image" accept=".png, .jpg, .jpeg">
 
             <img id="dummy" src="">
         </div>
